@@ -1,0 +1,30 @@
+function CstPort(mws,port_num,Yrange,port)
+sCommand = '';
+sCommand = [sCommand 'Pick.PickFaceFromId "','copper:top layer"',port_num];
+invoke(mws, 'AddToHistory','pick face', sCommand);
+sCommand = '';
+sCommand = [sCommand 10 'With Port'];
+sCommand = [sCommand 10 '.Reset'];
+sCommand = [sCommand 10 '.PortNumber ', port];
+sCommand = [sCommand 10 '.Label ', '""'];
+sCommand = [sCommand 10 '.NumberOfModes ', '1'];
+sCommand = [sCommand 10 '.AdjustPolarization ', '"False"'];
+sCommand = [sCommand 10 '.PolarizationAngle ', '0.0'];
+sCommand = [sCommand 10 '.ReferencePlaneDistance ', '0'];
+sCommand = [sCommand 10 '.TextSize ', '50'];
+sCommand = [sCommand 10 '.TextMaxLimit ', '0'];
+sCommand = [sCommand 10 '.Coordinates ', '"Picks"'];
+sCommand = [sCommand 10 '.Orientation ', '"positive"'];
+sCommand = [sCommand 10 '.PortOnBound ', '"False"'];
+sCommand = [sCommand 10 '.ClipPickedPortToBound ', '"False"'];
+sCommand = [sCommand 10 '.Yrange ', Yrange];
+sCommand = [sCommand 10 '.Xrange ', '"-L/2","L/2"'];
+sCommand = [sCommand 10 '.Zrange ', '"0", "h+h1+h2"'];
+sCommand = [sCommand 10 '.XrangeAdd ', '"0.0","0.0"'];
+sCommand = [sCommand 10 '.YrangeAdd ', '"1","1"'];
+sCommand = [sCommand 10 '.ZrangeAdd ', '"4*h1","6*h1"'];
+sCommand = [sCommand 10 '.SingleEnded ', '"False"'];
+sCommand = [sCommand 10 '.Create'];
+sCommand = [sCommand 10 'End With'];
+invoke(mws, 'AddToHistory','define port1', sCommand);
+end
